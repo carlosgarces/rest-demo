@@ -1,8 +1,8 @@
 package mx.com.tsis.rest.service.impl;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -58,9 +58,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
 	private static List<Empleado> populateDummyUsers(){
 		List<Empleado> empleados = new ArrayList<Empleado>();
-		empleados.add(new Empleado(counter.incrementAndGet(),"uno", "uno", "uno", LocalDate.now(), BigDecimal.TEN));
-		empleados.add(new Empleado(counter.incrementAndGet(),"Tomy", "uno", "uno", LocalDate.now(), BigDecimal.TEN));
-		empleados.add(new Empleado(counter.incrementAndGet(),"Kelly", "uno", "uno", LocalDate.now(), BigDecimal.TEN));
+		empleados.add(new Empleado(counter.incrementAndGet(),"uno", "uno", "uno", new Date(), BigDecimal.TEN));
+		empleados.add(new Empleado(counter.incrementAndGet(),"Tomy", "uno", "uno", new Date(), BigDecimal.TEN));
+		empleados.add(new Empleado(counter.incrementAndGet(),"Kelly", "uno", "uno", new Date(), BigDecimal.TEN));
 		return empleados;
 	}
 

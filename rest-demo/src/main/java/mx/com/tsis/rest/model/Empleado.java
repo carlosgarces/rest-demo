@@ -2,8 +2,10 @@ package mx.com.tsis.rest.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * A Empleado.
@@ -20,14 +22,6 @@ public class Empleado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
-	public Empleado(Long id, String nombre, String apellido1, String apedllido2, LocalDate ingreso, BigDecimal salario ){
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido1 = apellido1;
-		this.apellido2 = apedllido2;
-		this.ingreso = ingreso;
-		this.sueldo = salario;
-	}
 	
 //	@Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,12 +43,25 @@ public class Empleado implements Serializable {
     
 //    @NotNull
 //    @Column(name = "ingreso", nullable = false)
-    private LocalDate ingreso;
+    private Date ingreso;
     
 //    @NotNull
 //    @Column(name = "sueldo", precision=10, scale=2, nullable = false)
     private BigDecimal sueldo;
+
+    public Empleado(){
+    	
+    }
     
+	public Empleado(Long id, String nombre, String apellido1, String apedllido2, Date ingreso, BigDecimal salario ){
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apedllido2;
+		this.ingreso = ingreso;
+		this.sueldo = salario;
+	}
+
 
     public Long getId() {
         return id;
@@ -88,11 +95,12 @@ public class Empleado implements Serializable {
         this.apellido2 = apellido2;
     }
 
-    public LocalDate getIngreso() {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    public Date getIngreso() {
         return ingreso;
     }
     
-    public void setIngreso(LocalDate ingreso) {
+    public void setIngreso(Date ingreso) {
         this.ingreso = ingreso;
     }
 

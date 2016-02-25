@@ -1,56 +1,56 @@
 'use strict';
 
-App.factory('UserService', ['$http', '$q', function($http, $q){
+App.factory('EmpleadoService', ['$http', '$q', function($http, $q){
 
 	return {
 		
-			fetchAllUsers: function() {
+			fetchAllEmpleados: function() {
 					return $http.get('http://localhost:8080/restdemo/empleado/')
 							.then(
 									function(response){
 										return response.data;
 									}, 
 									function(errResponse){
-										console.error('Error while fetching users');
+										console.error('Error while fetching Empleados');
 										return $q.reject(errResponse);
 									}
 							);
 			},
 		    
-		    createUser: function(user){
-					return $http.post('http://localhost:8080/restdemo/empleado/', user)
+		    createEmpleado: function(empleado){
+					return $http.post('http://localhost:8080/restdemo/empleado/', empleado)
 							.then(
 									function(response){
 										return response.data;
 									}, 
 									function(errResponse){
-										console.error('Error while creating user');
+										console.error('Error while creating empleado');
 										return $q.reject(errResponse);
 									}
 							);
 		    },
 		    
-		    updateUser: function(user, id){
-					return $http.put('http://localhost:8080/restdemo/empleado/'+id, user)
+		    updateEmpleado: function(empleado, id){
+					return $http.put('http://localhost:8080/restdemo/empleado/'+id, empleado)
 							.then(
 									function(response){
 										return response.data;
 									}, 
 									function(errResponse){
-										console.error('Error while updating user');
+										console.error('Error while updating empleado');
 										return $q.reject(errResponse);
 									}
 							);
 			},
 		    
-			deleteUser: function(id){
+			deleteEmpleado: function(id){
 					return $http.delete('http://localhost:8080/restdemo/empleado/'+id)
 							.then(
 									function(response){
 										return response.data;
 									}, 
 									function(errResponse){
-										console.error('Error while deleting user');
+										console.error('Error while deleting empleado');
 										return $q.reject(errResponse);
 									}
 							);
