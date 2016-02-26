@@ -1,15 +1,12 @@
 package mx.com.tsis.rest.service.impl;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mx.com.tsis.rest.model.Empleado;
+import mx.com.tsis.rest.respository.EmpleadoRepository;
 import mx.com.tsis.rest.service.EmpleadoService;
 
 
@@ -17,51 +14,48 @@ import mx.com.tsis.rest.service.EmpleadoService;
 public class EmpleadoServiceImpl implements EmpleadoService {
 
 	
-	private static final AtomicLong counter = new AtomicLong();
+//	private static final AtomicLong counter = new AtomicLong();
 	
-	private static  List<Empleado> empleados;
+	@Autowired
+	EmpleadoRepository empleadoRepository;
+//	private static  List<Empleado> empleados;
 	
-	static{
-		empleados= populateDummyUsers();
-	}
+//	static{
+//		empleados= populateDummyUsers();
+//	}
 
 	
 	@Override
 	public Empleado save(Empleado empleado) {
-		empleado.setId(counter.incrementAndGet());
-		empleados.add(empleado);
+		empleadoRepository.saveAndFlush(empleado);
+//		empleado.setId(counter.incrementAndGet());
+//		empleados.add(empleado);
 		return empleado;
 	}
 
 	@Override
 	public List<Empleado> findAll() {
-		return empleados;
+		return empleadoRepository.findAll();
 	}
 
 	@Override
 	public Empleado findOne(Long id) {
-		return empleados.stream().filter(e -> e.getId() == id).findFirst().get();
+		return empleadoRepository.findOne(id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		for (Iterator<Empleado> iterator = empleados.iterator(); iterator.hasNext(); ) {
-			Empleado empleado = iterator.next();
-		    if (empleado.getId() == id) {
-		        iterator.remove();
-		    }
-		}
-		
+		empleadoRepository.delete(id);
 	}
 
 	
 
-	private static List<Empleado> populateDummyUsers(){
-		List<Empleado> empleados = new ArrayList<Empleado>();
-		empleados.add(new Empleado(counter.incrementAndGet(),"uno", "uno", "uno", new Date(), BigDecimal.TEN));
-		empleados.add(new Empleado(counter.incrementAndGet(),"Tomy", "uno", "uno", new Date(), BigDecimal.TEN));
-		empleados.add(new Empleado(counter.incrementAndGet(),"Kelly", "uno", "uno", new Date(), BigDecimal.TEN));
-		return empleados;
-	}
+//	private static List<Empleado> populateDummyUsers(){
+//		List<Empleado> empleados = new ArrayList<Empleado>();
+//		empleados.add(new Empleado(counter.incrementAndGet(),"uno", "uno", "uno", new Date(), BigDecimal.TEN));
+//		empleados.add(new Empleado(counter.incrementAndGet(),"Tomy", "uno", "uno", new Date(), BigDecimal.TEN));
+//		empleados.add(new Empleado(counter.incrementAndGet(),"Kelly", "uno", "uno", new Date(), BigDecimal.TEN));
+//		return empleados;
+//	}
 
 }

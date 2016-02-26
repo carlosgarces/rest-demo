@@ -5,13 +5,22 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * A Empleado.
  */
-//@Entity
-//@Table(name = "empleado")
+@Entity
+@Table(name = "empleado")
 public class Empleado implements Serializable {
 
 	
@@ -23,30 +32,30 @@ public class Empleado implements Serializable {
 
 	
 	
-//	@Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-//    @NotNull
-//    @Size(max = 40)
-//    @Column(name = "nombre", length = 40, nullable = false)
+    @NotNull
+    @Size(max = 40)
+    @Column(name = "nombre", length = 40, nullable = false)
     private String nombre;
     
-//    @NotNull
-//    @Size(max = 40)
-//    @Column(name = "apellido1", length = 40, nullable = false)
+    @NotNull
+    @Size(max = 40)
+    @Column(name = "apellido1", length = 40, nullable = false)
     private String apellido1;
     
-//    @Size(max = 40)
-//    @Column(name = "apellido2", length = 40)
+    @Size(max = 40)
+    @Column(name = "apellido2", length = 40)
     private String apellido2;
     
-//    @NotNull
-//    @Column(name = "ingreso", nullable = false)
+    @NotNull
+    @Column(name = "ingreso", nullable = false)
     private Date ingreso;
     
-//    @NotNull
-//    @Column(name = "sueldo", precision=10, scale=2, nullable = false)
+    @NotNull
+    @Column(name = "sueldo", precision=10, scale=2, nullable = false)
     private BigDecimal sueldo;
 
     public Empleado(){
@@ -95,7 +104,7 @@ public class Empleado implements Serializable {
         this.apellido2 = apellido2;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     public Date getIngreso() {
         return ingreso;
     }
