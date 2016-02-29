@@ -118,10 +118,41 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sparkjava</groupId>
+			<artifactId>spark-core</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sparkjava</groupId>
+			<artifactId>spark-template-freemarker</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1201-jdbc4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.heroku.sdk</groupId>
+			<artifactId>heroku-jdbc</artifactId>
+			<version>0.1.1</version>
+		</dependency>
 	</dependencies>
-
+	<repositories>
+		<repository>
+			<id>project.local</id>
+			<name>project</name>
+			<url>file:/opt/m2/repository</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
 	<build>
 		<finalName>rest-demo</finalName>
+
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -135,6 +166,14 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>com.heroku.sdk</groupId>
+					<artifactId>heroku-maven-plugin</artifactId>
+					<version>0.4.3</version>
+					<configuration>
+						<appName>spring-rest-demo</appName>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
 					<version>2.4</version>
@@ -144,7 +183,19 @@
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<optimize>true</optimize>
+						<debug>true</debug>
+					</configuration>
+				</plugin>
 			</plugins>
+
 		</pluginManagement>
 	</build>
 

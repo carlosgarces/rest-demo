@@ -104,11 +104,12 @@ public class Empleado implements Serializable {
         this.apellido2 = apellido2;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public Date getIngreso() {
         return ingreso;
     }
     
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public void setIngreso(Date ingreso) {
         this.ingreso = ingreso;
     }
