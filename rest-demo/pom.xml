@@ -139,7 +139,7 @@
 			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
-	<repositories>
+<!-- 	<repositories>
 		<repository>
 			<id>project.local</id>
 			<name>project</name>
@@ -150,7 +150,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<build>
+ -->	<build>
 		<finalName>rest-demo</finalName>
 
 		<resources>
@@ -179,7 +179,7 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>restdemo</warName>
+						<warName>spring-rest-demo</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
