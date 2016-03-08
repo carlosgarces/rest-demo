@@ -31,8 +31,14 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<logback.loglevel>DEBUG</logback.loglevel>
+		
+		<db.driver>com.mysql.jdbc.Driver</db.driver>
+		<db.url>jdbc:mysql://localhost:3306/snacken</db.url>
+		<db.username>snacken</db.username>
+		<db.password>Qwerty123</db.password>
+		<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 	</properties>
-  
+
 
 
 	<dependencies>
@@ -61,6 +67,11 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jslt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
 		</dependency>
 
 
@@ -139,18 +150,10 @@
 			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
-<!-- 	<repositories>
-		<repository>
-			<id>project.local</id>
-			<name>project</name>
-			<url>file:/opt/m2/repository</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<checksumPolicy>fail</checksumPolicy>
-			</snapshots>
-		</repository>
-	</repositories>
- -->	<build>
+	<!-- <repositories> <repository> <id>project.local</id> <name>project</name> 
+		<url>file:/opt/m2/repository</url> <snapshots> <enabled>true</enabled> <checksumPolicy>fail</checksumPolicy> 
+		</snapshots> </repository> </repositories> -->
+	<build>
 		<finalName>rest-demo</finalName>
 
 		<resources>
