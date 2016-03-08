@@ -33,9 +33,9 @@
 		<logback.loglevel>DEBUG</logback.loglevel>
 		
 		<db.driver>com.mysql.jdbc.Driver</db.driver>
-		<db.url>jdbc:mysql://localhost:3306/snacken</db.url>
+		<db.url>jdbc:mysql://192.168.248.129:3306/snacken</db.url>
 		<db.username>snacken</db.username>
-		<db.password>Qwerty123</db.password>
+		<db.password>snacken2016</db.password>
 		<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
 	</properties>
 
