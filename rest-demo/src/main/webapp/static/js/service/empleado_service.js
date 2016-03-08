@@ -5,7 +5,7 @@ App.factory('EmpleadoService', ['$http', '$q', function($http, $q){
 	return {
 		
 			fetchAllEmpleados: function() {
-					return $http.get('http://192.168.248.129/:8080/spring-rest-demo/empleado/')
+					return $http.get('http://192.168.248.129:8080/spring-rest-demo/empleado/')
 							.then(
 									function(response){
 										return response.data;
@@ -18,7 +18,7 @@ App.factory('EmpleadoService', ['$http', '$q', function($http, $q){
 			},
 		    
 		    createEmpleado: function(empleado){
-					return $http.post('http://192.168.248.129/:8080/spring-rest-demo/empleado/', empleado)
+					return $http.post('http://192.168.248.129:8080/spring-rest-demo/empleado/', empleado)
 							.then(
 									function(response){
 										return response.data;
@@ -31,7 +31,7 @@ App.factory('EmpleadoService', ['$http', '$q', function($http, $q){
 		    },
 		    
 		    updateEmpleado: function(empleado, id){
-					return $http.put('http://192.168.248.129/:8080/spring-rest-demo/empleado/'+id, empleado)
+					return $http.put('http://192.168.248.129:8080/spring-rest-demo/empleado/'+id, empleado)
 							.then(
 									function(response){
 										return response.data;
@@ -44,7 +44,7 @@ App.factory('EmpleadoService', ['$http', '$q', function($http, $q){
 			},
 		    
 			deleteEmpleado: function(id){
-					return $http.delete('http://192.168.248.129/:8080/spring-rest-demo/empleado/'+id)
+					return $http.delete('http://192.168.248.129:8080/spring-rest-demo/empleado/'+id)
 							.then(
 									function(response){
 										return response.data;
